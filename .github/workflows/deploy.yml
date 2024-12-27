@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install dependencies and build 🔧
+      - name: Install and Build
         run: |
           npm install
           npm run build
 
-      - name: Deploy 🚀
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
           branch: gh-pages
+          folder: dist
+          token: ${{ secrets.GITHUB_TOKEN }}
